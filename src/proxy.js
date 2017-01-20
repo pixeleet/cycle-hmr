@@ -155,7 +155,7 @@ export const hmrProxy = (adapters, dataflow, proxyId, options = {}) => {
     proxiedInstances = proxiesStore[proxyId] = []
   }
 
-  return (sources, ...rest) => {
+  return function execute(sources, ...rest) {
     debug('execute')
     let sinks = dataflow(sources, ...rest)
     if (!sinks){
